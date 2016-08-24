@@ -1,0 +1,3 @@
+dbc_dbname='<%= $mcp_mysql_db %>'
+dbc_dbuser='<%= $mcp_mysql_user %>'
+dbc_dbpass='<%= $mcp_mysql_password %>'

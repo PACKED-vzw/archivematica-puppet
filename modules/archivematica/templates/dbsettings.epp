@@ -1,0 +1,5 @@
+[client]
+user=<%= $mcp_mysql_user %>
+password=<%= $mcp_mysql_password %>
+host=<%= $mcp_mysql_host %>
+database=<%= $mcp_mysql_db %>
