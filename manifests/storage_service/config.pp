@@ -1,3 +1,5 @@
+##
+# Configure the storage service
 class archivematica::storage_service::config inherits archivematica {
 
   include archivematica::storage_service::config::nginx

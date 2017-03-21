@@ -1,6 +1,7 @@
+##
+# Parameter class
 class archivematica::params {
 
-  $storage_webserver  = 'nginx'
   $storage_port       = '8000'
   $storage_fqdn       = 'localhost'
   $storage_client_max_body_size = '256'
@@ -24,11 +25,4 @@ class archivematica::params {
   $mcp_gearman_port   = '4730'
   $mcp_elastic_server = 'localhost'
   $mcp_elastic_port   = '9200'
-  $configure_mysql    = true
-  $configure_gearman  = true
-  $configure_apache   = true
-  $configure_uwsgi    = true
-  $configure_nginx    = true
-  $configure_elastic  = true
-  $configure_clamav   = true
 }

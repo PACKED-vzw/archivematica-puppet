@@ -1,0 +1,54 @@
+{
+  "name": "packedvzw-archivematica",
+  "version": "1.0.0",
+  "author": "PACKED vzw",
+  "summary": "Module to configure Archivematica.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/PACKED-vzw/archivematica-puppet",
+  "project_page": "https://github.com/PACKED-vzw/archivematica-puppet",
+  "issues_url": "https://github.com/PACKED-vzw/archivematica-puppet/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+            "12.04",
+            "14.04",
+            "16.04"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "jfryman-nginx",
+      "version_range": ">= 0.6.0 < 1.0.0"
+    },
+    {
+      "name": "engage-uwsgi",
+      "version_range": ">= 1.2.0 < 2.0.0"
+    },
+    {
+      "name": "puppetlabs-apache",
+      "version_range": ">= 1.11.0 < 2.0.0"
+    },
+    {
+      "name": "saz-gearman",
+      "version_range": ">= 2.3.0 < 3.0.0"
+    },
+    {
+      "name": "edestecd-clamav",
+      "version_range": ">= 1.0.0 < 2.0.0"
+    },
+    {
+      "name": "elastic-elasticsearch",
+      "version_range": ">= 5.1.0 < 6.0.0"
+    },
+    {
+      "name": "puppetlabs-apt",
+      "version_range": ">= 2.3.0 < 3.0.0"
+    },
+    {
+      "name": "puppetlabs-mysql",
+      "version_range": ">= 3.10.0 < 4.0.0"
+    }
+  ]
+}

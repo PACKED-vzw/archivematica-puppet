@@ -1,1 +1,0 @@
-archivematica-mcp-server  mysql/admin-pass  password  <%= $mcp_mysql_root_password %>
