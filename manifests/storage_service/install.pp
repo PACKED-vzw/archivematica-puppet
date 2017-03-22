@@ -7,13 +7,4 @@ class archivematica::storage_service::install inherits archivematica {
     require => Exec['apt_update']
   }
 
-  if ! defined(Class['python']) {
-    class {'python': }
-  }
-
-  python::pip {'setuptools':
-    pkgname => 'setuptools',
-    ensure  => latest,
-  }
-
 }

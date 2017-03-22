@@ -5,7 +5,10 @@ class archivematica::storage_service::config::uwsgi inherits archivematica {
   $django_secret_key = fqdn_rand_string(512)
 
   if ! defined(Class['uwsgi']) {
-    include uwsgi
+    class {'uwsgi':
+      install_pip => false,
+      require     => [Python::Pip['setuptools'], Class['python']]
+    }
   }
 
   file { '/etc/uwsgi':

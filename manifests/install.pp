@@ -11,16 +11,31 @@ class archivematica::install () inherits archivematica {
 
     ##
     # Install repositories
-    apt::ppa {'ppa:archivematica/externals':
-      notify => Exec['apt_update'],
-    }
-
     apt::source {'archivematica':
       location     => 'http://packages.archivematica.org/1.6.x/ubuntu',
       release      => 'trusty',
       repos        => 'main',
       architecture => 'amd64',
       notify       => Exec['apt_update'],
+    }
+
+    apt::source {'archivematica-externals':
+      location     => 'http://packages.archivematica.org/1.6.x/ubuntu-externals',
+      release      => 'trusty',
+      repos        => 'main',
+      architecture => 'amd64',
+      notify       => Exec['apt_update'],
+    }
+
+    if ! defined(Class['python']) {
+      class {'python':
+        dev => present,
+      }
+    }
+
+    python::pip {'setuptools':
+      ensure  => latest,
+      pkgname => 'setuptools',
     }
 
     include archivematica::storage_service::install

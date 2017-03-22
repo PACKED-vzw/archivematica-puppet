@@ -31,7 +31,7 @@ class archivematica::mcp::install inherits archivematica {
   ['archivematica-mcp-server', 'archivematica-mcp-client', 'archivematica-dashboard'].each | $package | {
     package {$package:
       ensure  => installed,
-      require => [Mysql::Db[$archivematica::mcp_mysql_db], Exec['apt_update']],
+      require => [Mysql::Db[$archivematica::mcp_mysql_db], Exec['apt_update'], Python::Pip['setuptools']],
     }
   }
 
