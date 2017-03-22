@@ -1,6 +1,6 @@
 class {'archivematica':
     storage_port                      => '8000',
-    storage_fqdn                      => 'localhost',
+    storage_fqdn                      => 'archivematica.io',
     storage_client_max_body_size      => '256',
     storage_uwsgi_read_timeout        => '3600',
     storage_uwsgi_send_timeout        => '3600',
@@ -17,7 +17,7 @@ class {'archivematica':
     mcp_mysql_password                => 'demo',
     mcp_mysql_host                    => 'localhost',
     mcp_mysql_db                      => 'MCP',
-    mcp_servername                    => 'localhost',
+    mcp_servername                    => 'archivematica.io',
     mcp_gearman_server                => 'localhost',
     mcp_gearman_port                  => '4730',
     mcp_elastic_server                => 'localhost',

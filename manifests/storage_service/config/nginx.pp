@@ -18,12 +18,14 @@ class archivematica::storage_service::config::nginx inherits archivematica {
     use_default_location => false,
   }
 
-  nginx::resource::location {'/static':
+  nginx::resource::location {'archivematica-storage-service-static':
+    location       => '/static',
     location_alias => '/usr/lib/archivematica/storage-service/assets',
     vhost          => 'archivematica-storage-service',
   }
 
-  nginx::resource::location {'/':
+  nginx::resource::location {'archivematica-storage-service-root':
+    location            => '/',
     location_custom_cfg => {
       'uwsgi_pass'         => 'archivematica-storage-service', # eq. to proxy_pass
       'uwsgi_read_timeout' => $archivematica::storage_uwsgi_read_timeout,

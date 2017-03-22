@@ -2,12 +2,13 @@
 # Configure a VHOST for MCP
 class archivematica::mcp::config::apache inherits archivematica {
 
-  $vhost = "${apache::mcp_servername}_80"
+  $vhost = "${archivematica::mcp_servername}_80"
 
   class { 'apache::mod::wsgi': }
 
   apache::vhost { $vhost:
     port                => 80,
+    servername          => $archivematica::mcp_servername,
     docroot             => '/var/www',
     aliases             => [
       {
