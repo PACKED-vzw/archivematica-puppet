@@ -7,8 +7,10 @@ class archivematica::mcp::config::elasticsearch () inherits archivematica {
         manage_repo       => true,
         repo_version      => '1.7',
         restart_on_change => true,
+        status            => enabled,
         api_host          => $archivematica::mcp_elastic_server,
         api_port          => $archivematica::mcp_elastic_port,
     }
+    elasticsearch::instance { 'es-01': }
 
 }

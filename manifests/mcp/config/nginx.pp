@@ -36,6 +36,6 @@ class archivematica::mcp::config::nginx () inherits archivematica {
   nginx::resource::location {'archivematica-storage-service-media':
     location       => '/media',
     location_alias => '/usr/share/archivematica/dashboard/media',
-    vhost          => 'archivematica-storage-service',
+    vhost          => 'archivematica-dashboard',
   }
 }
