@@ -1,7 +1,7 @@
 # archivematica-puppet
 A Puppet module to install and configure Archivematica.
 
-#### Table of COntents
+#### Table of Contents
 
 1. [Description](#description)
 2. [Setup](#setup)

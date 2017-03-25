@@ -40,5 +40,6 @@ class archivematica (
 
     include archivematica::install
     include archivematica::config
+    include archivematica::service
 
   }

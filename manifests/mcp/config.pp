@@ -4,6 +4,14 @@ class archivematica::mcp::config inherits archivematica {
 
   include archivematica::mcp::config::nginx
   include archivematica::mcp::config::gearman
+  include archivematica::mcp::config::elasticsearch
+
+  if ! defined(Class['clamav']) {
+    class {'clamav':
+      manage_clamd     => true,
+      manage_freshclam => true,
+    }
+  }
 
   $mcp_gearman_addr = "${archivematica::mcp_gearman_server}:${archivematica::mcp_gearman_port}"
   $mcp_elastic_addr = "${archivematica::mcp_elastic_server}:${archivematica::mcp_elastic_port}";
@@ -18,6 +26,12 @@ class archivematica::mcp::config inherits archivematica {
       'mcp_mysql_password' => $archivematica::mcp_mysql_password,
       }),
     require => [Package['archivematica-mcp-server']],
+    notify  => [
+      Service['archivematica-mcp-server'],
+      Service['archivematica-mcp-client'],
+      Service['archivematica-storage-service'],
+      Service['archivematica-dashboard'],
+    ]
   }
 
   file {'/etc/archivematica/MCPServer/serverConfig.conf':
@@ -27,6 +41,9 @@ class archivematica::mcp::config inherits archivematica {
       'mcp_gearman_addr' => $mcp_gearman_addr,
       }),
     require => Package['archivematica-mcp-server'],
+    notify  => [
+      Service['archivematica-mcp-server'],
+    ]
   }
 
   file {'/etc/archivematica/MCPClient/clientConfig.conf':
@@ -37,15 +54,9 @@ class archivematica::mcp::config inherits archivematica {
       'mcp_elastic_addr' => $mcp_elastic_addr
       }),
     require => Package['archivematica-mcp-client'],
+    notify  => [
+      Service['archivematica-mcp-client'],
+    ]
   }
-
-  if ! defined(Class['clamav']) {
-    class {'clamav':
-      manage_clamd     => true,
-      manage_freshclam => true,
-    }
-  }
-
-  include archivematica::mcp::config::elasticsearch
 
 }
